@@ -33,10 +33,14 @@ public class ListFriend {
 		for (JsonElement array : jsonArray) {
 			UUID uuid = UUID.fromString(array.getAsString());
 			OfflinePlayer friend = Bukkit.getPlayer(uuid);
-			if (friend == null) return;
+			if (friend == null) continue;
 			builder
 					.append("\n » ").color(ChatColor.DARK_AQUA)
 					.append(friend.getName()).color(ChatColor.GREEN);
+			if (friend.isOnline()) builder
+					.append(" (").color(ChatColor.DARK_GRAY)
+					.append("Online").color(ChatColor.AQUA)
+					.append(")").color(ChatColor.DARK_GRAY);
 		}
 		sender.sendMessage(builder.create());
 	}
