@@ -1,6 +1,7 @@
 package com.gmail.perhapsitisyeazz.manager.SubCommandFunc;
 
 import com.gmail.perhapsitisyeazz.util.Data;
+import com.gmail.perhapsitisyeazz.util.Message;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -18,7 +19,7 @@ public class ListFriend {
 		JsonObject senderObject = Data.getJsonObject(sender);
 		JsonArray jsonArray = senderObject.get("FriendList").getAsJsonArray();
 		if (jsonArray.size() == 0) {
-			sender.sendMessage(ChatColor.DARK_GREEN + "You do not have friends, sorry.");
+			sender.sendMessage(Message.getNoFriendMessage());
 			return;
 		}
 		ComponentBuilder builder = new ComponentBuilder();

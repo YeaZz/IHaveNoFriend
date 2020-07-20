@@ -1,9 +1,8 @@
 package com.gmail.perhapsitisyeazz.manager.SubCommandFunc;
 
 import com.gmail.perhapsitisyeazz.util.Data;
+import com.gmail.perhapsitisyeazz.util.Message;
 import com.google.gson.JsonObject;
-import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.entity.Player;
 
 public class ToggleFriend {
@@ -11,21 +10,11 @@ public class ToggleFriend {
     public static void friendToggleCommand(Player sender) {
         JsonObject object = Data.getJsonObject(sender);
         if (Data.hasFriendToggle(sender)) {
-            sender.sendMessage(new ComponentBuilder()
-                    .append("[").color(ChatColor.DARK_GRAY)
-                    .append("Friend").color(ChatColor.DARK_AQUA)
-                    .append("] ").color(ChatColor.DARK_GRAY)
-                    .append("Nobody can add you as friend anymore.").color(ChatColor.DARK_GREEN)
-                    .create());
+            sender.sendMessage(Message.getNobodyCanAddFriendMessage());
             object.addProperty("hasFriendRequestToggle", false);
             return;
         }
-        sender.sendMessage(new ComponentBuilder()
-                .append("[").color(ChatColor.DARK_GRAY)
-                .append("Friend").color(ChatColor.DARK_AQUA)
-                .append("] ").color(ChatColor.DARK_GRAY)
-                .append("Everybody can add you as friend now.").color(ChatColor.DARK_GREEN)
-                .create());
+        sender.sendMessage(Message.getEveryCanAddFriendMessage());
         object.addProperty("hasFriendRequestToggle", true);
         Data.saveObject(Data.getData(sender), object);
     }
