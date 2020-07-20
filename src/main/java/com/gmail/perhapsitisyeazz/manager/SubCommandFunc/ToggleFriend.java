@@ -2,16 +2,9 @@ package com.gmail.perhapsitisyeazz.manager.SubCommandFunc;
 
 import com.gmail.perhapsitisyeazz.util.Data;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.moderocky.mask.internal.utility.FileManager;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.entity.Player;
-
-import java.io.File;
-import java.util.UUID;
-
-import static com.gmail.perhapsitisyeazz.IHaveNoFriend.storingFile;
 
 public class ToggleFriend {
 
