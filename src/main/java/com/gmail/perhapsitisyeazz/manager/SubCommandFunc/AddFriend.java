@@ -41,6 +41,16 @@ public class AddFriend {
                     .create());
             return;
         }
+        if (!Data.hasFriendToggle(target)) {
+            sender.sendMessage(new ComponentBuilder()
+                    .append("[").color(ChatColor.DARK_GRAY)
+                    .append("Friend").color(ChatColor.DARK_AQUA)
+                    .append("] ").color(ChatColor.DARK_GRAY)
+                    .append(target.getName()).color(ChatColor.AQUA)
+                    .append(" doesn't accept friend request.").color(ChatColor.DARK_GREEN)
+                    .create());
+            return;
+        }
         if (friendRequest.containsKey(sID) && friendRequest.containsValue(tID)) {
             sender.sendMessage(new ComponentBuilder()
                     .append("[").color(ChatColor.DARK_GRAY)

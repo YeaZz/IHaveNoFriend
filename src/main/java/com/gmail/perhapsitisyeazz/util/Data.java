@@ -87,4 +87,9 @@ public class Data {
 		Data.saveObject(Data.getData(sender), senderObject);
 		Data.saveObject(Data.getData(target), targetObject);
 	}
+
+	public static boolean hasFriendToggle(OfflinePlayer sender) {
+		JsonObject object = Data.getJsonObject(sender);
+		return object.get("hasFriendRequestToggle").getAsBoolean();
+	}
 }
