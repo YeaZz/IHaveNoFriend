@@ -46,7 +46,8 @@ public class HelpFriend {
         } else {
             sender.sendMessage(new ComponentBuilder()
                     .append("Running ").color(ChatColor.DARK_GREEN)
-                    .append("IHaveNoFriend v").color(ChatColor.AQUA)
+                    .append(instance.getName()).color(ChatColor.AQUA)
+                    .append(" v")
                     .append(instance.getVersion())
                     .append(".").color(ChatColor.DARK_GREEN)
                     .create());

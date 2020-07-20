@@ -9,13 +9,16 @@ import org.bukkit.entity.Player;
 
 public class Message {
 
+	private static final IHaveNoFriend instance = IHaveNoFriend.getInstance();
+
 	public static void sendHelpMessage(CommandSender sender) {
 		ComponentBuilder builder = new ComponentBuilder();
 		if (sender instanceof Player) {
 			builder
 					.append("Running ").color(ChatColor.DARK_GREEN)
-					.append("IHaveNoFriend v").color(ChatColor.AQUA)
-					.append(IHaveNoFriend.getInstance().getVersion())
+					.append(instance.getName()).color(ChatColor.AQUA)
+					.append(" v")
+					.append(instance.getVersion())
 					.append(".").color(ChatColor.DARK_GREEN).reset()
 					.append("\nUse ")
 					.append("/friend help").color(ChatColor.GREEN)
@@ -34,14 +37,15 @@ public class Message {
 		} else {
 			sender.sendMessage(new ComponentBuilder()
 					.append("Running ").color(ChatColor.DARK_GREEN)
-					.append("IHaveNoFriend v").color(ChatColor.AQUA)
-					.append(IHaveNoFriend.getInstance().getVersion())
+					.append(instance.getName()).color(ChatColor.AQUA)
+					.append(" v")
+					.append(instance.getVersion())
 					.append(".").color(ChatColor.DARK_GREEN)
 					.create());
 			sender.sendMessage(new ComponentBuilder()
 					.append("Use ")
 					.append("/friend help").color(ChatColor.GREEN)
-					.append(" to see all commands.").retain(ComponentBuilder.FormatRetention.NONE).reset()
+					.append(" to see all commands.").color(ChatColor.WHITE)
 					.create());
 			sender.sendMessage(new ComponentBuilder()
 					.append("Built on the ").color(ChatColor.DARK_AQUA)
