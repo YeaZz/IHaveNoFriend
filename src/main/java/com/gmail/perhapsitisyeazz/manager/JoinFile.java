@@ -1,4 +1,4 @@
-package com.gmail.perhapsitisyeazz.manager.FilesFunc;
+package com.gmail.perhapsitisyeazz.manager;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

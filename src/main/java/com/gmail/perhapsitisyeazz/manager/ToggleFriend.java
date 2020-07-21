@@ -1,4 +1,4 @@
-package com.gmail.perhapsitisyeazz.manager.SubCommandFunc;
+package com.gmail.perhapsitisyeazz.manager;
 
 import com.gmail.perhapsitisyeazz.util.Data;
 import com.gmail.perhapsitisyeazz.util.Message;

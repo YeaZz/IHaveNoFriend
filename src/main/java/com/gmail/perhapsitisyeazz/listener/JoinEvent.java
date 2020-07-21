@@ -1,6 +1,6 @@
 package com.gmail.perhapsitisyeazz.listener;
 
-import com.gmail.perhapsitisyeazz.manager.FilesFunc.JoinFile;
+import com.gmail.perhapsitisyeazz.manager.JoinFile;
 import com.gmail.perhapsitisyeazz.util.Data;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

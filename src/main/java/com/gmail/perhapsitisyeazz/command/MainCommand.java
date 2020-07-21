@@ -1,7 +1,7 @@
 package com.gmail.perhapsitisyeazz.command;
 
 import com.gmail.perhapsitisyeazz.IHaveNoFriend;
-import com.gmail.perhapsitisyeazz.manager.SubCommandFunc.*;
+import com.gmail.perhapsitisyeazz.manager.*;
 import com.gmail.perhapsitisyeazz.util.Message;
 import com.moderocky.mask.command.ArgOfflinePlayer;
 import com.moderocky.mask.command.ArgPlayer;
@@ -26,17 +26,17 @@ public class MainCommand extends Commander<CommandSender> implements WrappedComm
     public CommandImpl create() {
         return command("friend")
                 .arg("help", sender -> HelpFriend.friendHelpCommand(sender, this))
-                .arg("toggle", sender -> ToggleFriend.friendToggleCommand((Player) sender))
+                .arg("toggle", desc("Toggle friends request."), sender -> ToggleFriend.friendToggleCommand((Player) sender))
                 .arg("list", sender -> ListFriend.friendListFriend((Player) sender))
                 .arg("add", sender -> sender.sendMessage(ChatColor.RED + "You must enter a player."),
                         arg(
-                                desc("Send a friend request to a player."),
+                                desc("Add a player as a friend."),
                                 (sender, input) -> AddFriend.friendAddCommand((Player) sender, (Player) input[0]),
                                 new ArgPlayer()
                         ))
                 .arg("remove", sender -> sender.sendMessage(ChatColor.RED + "You must enter a player."),
                         arg(
-                                desc("Remove a friend from your friend list."),
+                                desc("Remove a player from your friends."),
                                 (sender, input) -> RemoveFriend.friendRemoveCommand((Player) sender, (OfflinePlayer) input[0]),
                                 new ArgOfflinePlayer()
                         ))
