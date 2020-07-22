@@ -1,6 +1,5 @@
 package com.gmail.perhapsitisyeazz.command;
 
-import com.gmail.perhapsitisyeazz.IHaveNoFriend;
 import com.gmail.perhapsitisyeazz.manager.*;
 import com.gmail.perhapsitisyeazz.util.Message;
 import com.moderocky.mask.command.ArgOfflinePlayer;
@@ -20,14 +19,12 @@ import java.util.*;
 
 public class MainCommand extends Commander<CommandSender> implements WrappedCommand {
 
-    private final IHaveNoFriend instance = IHaveNoFriend.getInstance();
-
     @Override
     public CommandImpl create() {
         return command("friend")
                 .arg("help", sender -> HelpFriend.friendHelpCommand(sender, this))
                 .arg("toggle", desc("Toggle friends request."), sender -> ToggleFriend.friendToggleCommand((Player) sender))
-                .arg("list", sender -> ListFriend.friendListFriend((Player) sender))
+                .arg("list", desc("List your friends."), sender -> ListFriend.friendListFriend((Player) sender))
                 .arg("add", sender -> sender.sendMessage(ChatColor.RED + "You must enter a player."),
                         arg(
                                 desc("Add a player as a friend."),
