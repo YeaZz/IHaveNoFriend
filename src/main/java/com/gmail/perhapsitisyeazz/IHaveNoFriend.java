@@ -1,3 +1,5 @@
+// Main class
+
 package com.gmail.perhapsitisyeazz;
 
 import com.gmail.perhapsitisyeazz.command.MainCommand;
