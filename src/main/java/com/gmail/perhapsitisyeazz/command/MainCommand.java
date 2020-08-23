@@ -24,31 +24,31 @@ public class MainCommand extends Commander<CommandSender> implements WrappedComm
     @Override
     public CommandImpl create() {
         return command("friend")
-                .arg("help", sender -> HelpFriend.friendHelpCommand(sender, this))
-                .arg("toggle", desc("Toggle friends request."), sender -> ToggleFriend.friendToggleCommand((Player) sender))
-                .arg("list", desc("List your friends."), sender -> ListFriend.friendListFriend((Player) sender))
+                .arg("help", sender -> Friend.friendHelpCommand(sender, this))
+                .arg("toggle", desc("Toggle friends request."), sender -> Friend.friendToggleCommand((Player) sender))
+                .arg("list", desc("List your friends."), sender -> Friend.friendListFriend((Player) sender))
                 .arg("add", sender -> sender.sendMessage(ChatColor.RED + "You must enter a player."),
                         arg(
                                 desc("Add a player as a friend."),
-                                (sender, input) -> AddFriend.friendAddCommand((Player) sender, (Player) input[0]),
+                                (sender, input) -> Friend.friendAddCommand((Player) sender, (Player) input[0]),
                                 new ArgPlayer()
                         ))
                 .arg("remove", sender -> sender.sendMessage(ChatColor.RED + "You must enter a player."),
                         arg(
                                 desc("Remove a player from your friends."),
-                                (sender, input) -> RemoveFriend.friendRemoveCommand((Player) sender, (OfflinePlayer) input[0]),
+                                (sender, input) -> Friend.friendRemoveCommand((Player) sender, (OfflinePlayer) input[0]),
                                 new ArgOfflinePlayer()
                         ))
                 .arg("accept", sender -> sender.sendMessage(ChatColor.RED + "You must enter a player."),
                         arg(
                                 desc("Accept a friend request."),
-                                (sender, input) -> AcceptFriend.friendAcceptCommand((Player) sender, (OfflinePlayer) input[0]),
+                                (sender, input) -> Friend.friendAcceptCommand((Player) sender, (OfflinePlayer) input[0]),
                                 new ArgOfflinePlayer()
                         ))
                 .arg("deny", sender -> sender.sendMessage(ChatColor.RED + "You must enter a player."),
                         arg(
                                 desc("Decline a friend request."),
-                                (sender, input) -> DenyFriend.friendDenyCommand((Player) sender, (OfflinePlayer) input[0]),
+                                (sender, input) -> Friend.friendDenyCommand((Player) sender, (OfflinePlayer) input[0]),
                                 new ArgOfflinePlayer()
                         ));
     }

@@ -18,9 +18,9 @@ public class IHaveNoFriend extends BukkitPlugin {
         return instance;
     }
 
-    public static HashMap<UUID, UUID> friendRequest = new HashMap<>();
+    public final static HashMap<UUID, UUID> friendRequest = new HashMap<>();
 
-    public static File storingFile = new File("plugins/IHaveNoFriend/PlayerData/");
+    public final static File storingFile = new File("plugins/IHaveNoFriend/PlayerData/");
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     @Override
