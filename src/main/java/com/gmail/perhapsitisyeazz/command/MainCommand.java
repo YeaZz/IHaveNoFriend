@@ -1,8 +1,6 @@
-// Main Command
-
 package com.gmail.perhapsitisyeazz.command;
 
-import com.gmail.perhapsitisyeazz.manager.*;
+import com.gmail.perhapsitisyeazz.manager.Friend;
 import com.gmail.perhapsitisyeazz.util.Message;
 import com.moderocky.mask.command.ArgOfflinePlayer;
 import com.moderocky.mask.command.ArgPlayer;
@@ -21,34 +19,36 @@ import java.util.*;
 
 public class MainCommand extends Commander<CommandSender> implements WrappedCommand {
 
+    private final Friend friendManager = Friend.getFriendManager();
+
     @Override
     public CommandImpl create() {
         return command("friend")
-                .arg("help", sender -> Friend.friendHelpCommand(sender, this))
-                .arg("toggle", desc("Toggle friends request."), sender -> Friend.friendToggleCommand((Player) sender))
-                .arg("list", desc("List your friends."), sender -> Friend.friendListFriend((Player) sender))
+                .arg("help", sender -> friendManager.friendHelpCommand(sender, this))
+                .arg("toggle", desc("Toggle friends request."), sender -> friendManager.friendToggleCommand((Player) sender))
+                .arg("list", desc("List your friends."), sender -> friendManager.friendListFriend((Player) sender))
                 .arg("add", sender -> sender.sendMessage(ChatColor.RED + "You must enter a player."),
                         arg(
                                 desc("Add a player as a friend."),
-                                (sender, input) -> Friend.friendAddCommand((Player) sender, (Player) input[0]),
+                                (sender, input) -> friendManager.friendAddCommand((Player) sender, (Player) input[0]),
                                 new ArgPlayer()
                         ))
                 .arg("remove", sender -> sender.sendMessage(ChatColor.RED + "You must enter a player."),
                         arg(
                                 desc("Remove a player from your friends."),
-                                (sender, input) -> Friend.friendRemoveCommand((Player) sender, (OfflinePlayer) input[0]),
+                                (sender, input) -> friendManager.friendRemoveCommand((Player) sender, (OfflinePlayer) input[0]),
                                 new ArgOfflinePlayer()
                         ))
                 .arg("accept", sender -> sender.sendMessage(ChatColor.RED + "You must enter a player."),
                         arg(
                                 desc("Accept a friend request."),
-                                (sender, input) -> Friend.friendAcceptCommand((Player) sender, (OfflinePlayer) input[0]),
+                                (sender, input) -> friendManager.friendAcceptCommand((Player) sender, (OfflinePlayer) input[0]),
                                 new ArgOfflinePlayer()
                         ))
                 .arg("deny", sender -> sender.sendMessage(ChatColor.RED + "You must enter a player."),
                         arg(
                                 desc("Decline a friend request."),
-                                (sender, input) -> Friend.friendDenyCommand((Player) sender, (OfflinePlayer) input[0]),
+                                (sender, input) -> friendManager.friendDenyCommand((Player) sender, (OfflinePlayer) input[0]),
                                 new ArgOfflinePlayer()
                         ));
     }
