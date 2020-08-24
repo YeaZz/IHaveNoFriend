@@ -1,4 +1,4 @@
-package com.gmail.perhapsitisyeazz.util;
+package com.gmail.perhapsitisyeazz.ihavenofriend.util;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import java.io.File;
 import java.util.UUID;
 
-import static com.gmail.perhapsitisyeazz.IHaveNoFriend.storingFile;
+import static com.gmail.perhapsitisyeazz.ihavenofriend.IHaveNoFriend.storingFile;
 
 public class Data {
 

@@ -1,7 +1,7 @@
-package com.gmail.perhapsitisyeazz;
+package com.gmail.perhapsitisyeazz.ihavenofriend;
 
-import com.gmail.perhapsitisyeazz.command.MainCommand;
-import com.gmail.perhapsitisyeazz.listener.JoinEvent;
+import com.gmail.perhapsitisyeazz.ihavenofriend.command.MainCommand;
+import com.gmail.perhapsitisyeazz.ihavenofriend.listener.JoinEvent;
 import com.moderocky.mask.template.BukkitPlugin;
 
 import java.io.File;

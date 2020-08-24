@@ -1,8 +1,8 @@
-package com.gmail.perhapsitisyeazz.manager;
+package com.gmail.perhapsitisyeazz.ihavenofriend.manager;
 
-import com.gmail.perhapsitisyeazz.IHaveNoFriend;
-import com.gmail.perhapsitisyeazz.util.Data;
-import com.gmail.perhapsitisyeazz.util.Message;
+import com.gmail.perhapsitisyeazz.ihavenofriend.IHaveNoFriend;
+import com.gmail.perhapsitisyeazz.ihavenofriend.util.Data;
+import com.gmail.perhapsitisyeazz.ihavenofriend.util.Message;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

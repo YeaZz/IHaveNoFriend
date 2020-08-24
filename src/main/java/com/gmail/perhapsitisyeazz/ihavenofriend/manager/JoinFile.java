@@ -1,13 +1,12 @@
-package com.gmail.perhapsitisyeazz.manager;
+package com.gmail.perhapsitisyeazz.ihavenofriend.manager;
 
+import com.gmail.perhapsitisyeazz.ihavenofriend.IHaveNoFriend;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.moderocky.mask.internal.utility.FileManager;
 import org.bukkit.entity.Player;
 
 import java.io.File;
-
-import static com.gmail.perhapsitisyeazz.IHaveNoFriend.storingFile;
 
 public class JoinFile {
 
@@ -22,8 +21,8 @@ public class JoinFile {
 
 	public static void createPlayerFile(Player player) {
 		String uniqueID = player.getUniqueId().toString();
-		if (new File(storingFile + uniqueID).exists()) return;
+		if (new File(IHaveNoFriend.storingFile + uniqueID).exists()) return;
 		String jsonObjectToString = getJsonObject(player).toString();
-		FileManager.write(new File(storingFile, uniqueID + ".json"), jsonObjectToString);
+		FileManager.write(new File(IHaveNoFriend.storingFile, uniqueID + ".json"), jsonObjectToString);
 	}
 }

@@ -1,6 +1,6 @@
-package com.gmail.perhapsitisyeazz.util;
+package com.gmail.perhapsitisyeazz.ihavenofriend.util;
 
-import com.gmail.perhapsitisyeazz.IHaveNoFriend;
+import com.gmail.perhapsitisyeazz.ihavenofriend.IHaveNoFriend;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;

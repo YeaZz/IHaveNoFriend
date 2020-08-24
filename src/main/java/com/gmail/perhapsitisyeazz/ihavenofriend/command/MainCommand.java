@@ -1,7 +1,7 @@
-package com.gmail.perhapsitisyeazz.command;
+package com.gmail.perhapsitisyeazz.ihavenofriend.command;
 
-import com.gmail.perhapsitisyeazz.manager.Friend;
-import com.gmail.perhapsitisyeazz.util.Message;
+import com.gmail.perhapsitisyeazz.ihavenofriend.manager.Friend;
+import com.gmail.perhapsitisyeazz.ihavenofriend.util.Message;
 import com.moderocky.mask.command.ArgOfflinePlayer;
 import com.moderocky.mask.command.ArgPlayer;
 import com.moderocky.mask.command.Commander;

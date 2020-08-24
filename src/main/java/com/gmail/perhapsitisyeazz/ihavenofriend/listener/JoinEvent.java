@@ -1,7 +1,7 @@
-package com.gmail.perhapsitisyeazz.listener;
+package com.gmail.perhapsitisyeazz.ihavenofriend.listener;
 
-import com.gmail.perhapsitisyeazz.manager.JoinFile;
-import com.gmail.perhapsitisyeazz.util.Data;
+import com.gmail.perhapsitisyeazz.ihavenofriend.util.Data;
+import com.gmail.perhapsitisyeazz.ihavenofriend.manager.JoinFile;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
