@@ -19,9 +19,11 @@ public class JoinFile {
 		return object;
 	}
 
+	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public static void createPlayerFile(Player player) {
 		String uniqueID = player.getUniqueId().toString();
 		if (new File(IHaveNoFriend.storingFile + uniqueID).exists()) return;
+		if (!IHaveNoFriend.storingFile.exists()) IHaveNoFriend.storingFile.mkdirs();
 		String jsonObjectToString = getJsonObject(player).toString();
 		FileManager.write(new File(IHaveNoFriend.storingFile, uniqueID + ".json"), jsonObjectToString);
 	}

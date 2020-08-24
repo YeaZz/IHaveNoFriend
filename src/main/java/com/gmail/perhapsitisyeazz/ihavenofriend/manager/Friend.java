@@ -24,12 +24,6 @@ import java.util.UUID;
 
 public class Friend {
 
-    private static Friend friendManager;
-
-    public static Friend getFriendManager() {
-        return friendManager;
-    }
-
     private final IHaveNoFriend instance = IHaveNoFriend.getInstance();
 
     private final HashMap<UUID, UUID> friendRequest = IHaveNoFriend.friendRequest;

@@ -19,7 +19,7 @@ import java.util.*;
 
 public class MainCommand extends Commander<CommandSender> implements WrappedCommand {
 
-    private final Friend friendManager = Friend.getFriendManager();
+    private final Friend friendManager = new Friend();
 
     @Override
     public CommandImpl create() {
