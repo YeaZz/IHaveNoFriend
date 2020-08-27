@@ -26,6 +26,7 @@ public class Friend {
 
     private final IHaveNoFriend instance = IHaveNoFriend.getInstance();
     private final Message message = new Message();
+    private final Data data = new Data();
 
     private final HashMap<UUID, UUID> friendRequest = IHaveNoFriend.friendRequest;
 
@@ -35,11 +36,11 @@ public class Friend {
             return;
         }
         friendRequest.remove(target.getUniqueId(), sender.getUniqueId());
-        if (Data.alreadyFriend(sender, target)) {
+        if (data.alreadyFriend(sender, target)) {
             sender.sendMessage(message.getIsAlreadyYourFriendMessage(target));
             return;
         }
-        Data.addFriendFile(sender, target);
+        data.addFriendFile(sender, target);
         sender.sendMessage(message.getSuccessfullyAddedMessage(target));
         if (!target.isOnline()) return;
         ((Player) target).sendMessage(message.getAddedInFriendListMessage(sender));
@@ -61,11 +62,11 @@ public class Friend {
             sender.sendMessage(message.getCannotAddFriendMessage());
             return;
         }
-        if (Data.alreadyFriend(sender, target)) {
+        if (data.alreadyFriend(sender, target)) {
             sender.sendMessage(message.getIsAlreadyYourFriendMessage(target));
             return;
         }
-        if (!Data.hasFriendToggle(target)) {
+        if (!data.hasFriendToggle(target)) {
             sender.sendMessage(message.getDoesNotAcceptFriendMessage(target));
             return;
         }
@@ -75,7 +76,7 @@ public class Friend {
         }
         if (friendRequest.containsKey(tID) && friendRequest.containsValue(sID)) {
             friendRequest.remove(tID, sID);
-            Data.addFriendFile(sender, target);
+            data.addFriendFile(sender, target);
             sender.sendMessage(message.getAddedInFriendListMessage(target));
             if (target.isOnline()) ((Player) target).sendMessage(message.getAddedInFriendListMessage(sender));
             return;
@@ -98,16 +99,16 @@ public class Friend {
     }
 
     public void friendRemoveCommand(Player sender, OfflinePlayer target) {
-        if (!Data.alreadyFriend(sender, target)) {
+        if (!data.alreadyFriend(sender, target)) {
             sender.sendMessage(message.getIsNotYourFriendMessage(target));
             return;
         }
-        Data.removeFriendFile(sender, target);
+        data.removeFriendFile(sender, target);
         sender.sendMessage(message.getSuccessfullyRemovedMessage(target));
     }
 
     public void friendListFriend(Player sender) {
-        JsonObject senderObject = Data.getJsonObject(sender);
+        JsonObject senderObject = data.getJsonObject(sender);
         JsonArray jsonArray = senderObject.get("FriendList").getAsJsonArray();
         if (jsonArray.size() == 0) {
             sender.sendMessage(message.getNoFriendMessage());
@@ -138,15 +139,15 @@ public class Friend {
     }
 
     public void friendToggleCommand(Player sender) {
-        JsonObject object = Data.getJsonObject(sender);
-        if (Data.hasFriendToggle(sender)) {
+        JsonObject object = data.getJsonObject(sender);
+        if (data.hasFriendToggle(sender)) {
             sender.sendMessage(message.getNobodyCanAddFriendMessage());
             object.addProperty("hasFriendRequestToggle", false);
             return;
         }
         sender.sendMessage(message.getEveryCanAddFriendMessage());
         object.addProperty("hasFriendRequestToggle", true);
-        Data.saveObject(Data.getData(sender), object);
+        data.saveObject(data.getData(sender), object);
     }
 
     public void friendHelpCommand(CommandSender sender, Commander<?> commander) {

@@ -19,12 +19,15 @@ import java.util.*;
 
 public class JoinEvent implements Listener {
 
+    private final JoinFile joinFile = new JoinFile();
+    private final Data data = new Data();
+
     @EventHandler
     private void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        File playerData = Data.getData(player);
-        if (!playerData.exists()) JoinFile.createPlayerFile(player);
-        JsonObject object = Data.getJsonObject(player);
+        File playerData = data.getData(player);
+        if (!playerData.exists()) joinFile.createPlayerFile(player);
+        JsonObject object = data.getJsonObject(player);
         String name = object.get("Username").getAsString();
         if (!name.equals(player.getName())) {
             object.addProperty("Username", player.getName());
