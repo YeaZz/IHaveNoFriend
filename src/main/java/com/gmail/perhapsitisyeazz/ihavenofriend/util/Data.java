@@ -1,5 +1,6 @@
 package com.gmail.perhapsitisyeazz.ihavenofriend.util;
 
+import com.gmail.perhapsitisyeazz.ihavenofriend.IHaveNoFriend;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -11,9 +12,9 @@ import org.bukkit.entity.Player;
 import java.io.File;
 import java.util.UUID;
 
-import static com.gmail.perhapsitisyeazz.ihavenofriend.IHaveNoFriend.storingFile;
-
 public class Data {
+
+	private final File storingFile = new IHaveNoFriend().storingFile;
 
 	@SuppressWarnings("deprecation")
 	public JsonObject getJsonObject(OfflinePlayer player) {

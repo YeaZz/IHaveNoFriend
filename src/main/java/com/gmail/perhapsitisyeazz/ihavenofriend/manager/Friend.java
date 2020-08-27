@@ -28,7 +28,7 @@ public class Friend {
     private final Message message = new Message();
     private final Data data = new Data();
 
-    private final HashMap<UUID, UUID> friendRequest = IHaveNoFriend.friendRequest;
+    private final HashMap<UUID, UUID> friendRequest = new IHaveNoFriend().friendRequest;
 
     public void friendAcceptCommand(Player sender, OfflinePlayer target) {
         if (!friendRequest.containsKey(target.getUniqueId()) && !friendRequest.containsValue(sender.getUniqueId())) {

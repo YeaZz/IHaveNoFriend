@@ -10,6 +10,8 @@ import java.io.File;
 
 public class JoinFile {
 
+	private final File storingFile = new IHaveNoFriend().storingFile;
+
 	public JsonObject getJsonObject(Player player) {
 		JsonObject object = new JsonObject();
 		object.addProperty("UniqueID", player.getUniqueId().toString());
@@ -22,9 +24,9 @@ public class JoinFile {
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public void createPlayerFile(Player player) {
 		String uniqueID = player.getUniqueId().toString();
-		if (new File(IHaveNoFriend.storingFile + uniqueID).exists()) return;
-		if (!IHaveNoFriend.storingFile.exists()) IHaveNoFriend.storingFile.mkdirs();
+		if (new File(storingFile + uniqueID).exists()) return;
+		if (!storingFile.exists()) storingFile.mkdirs();
 		String jsonObjectToString = getJsonObject(player).toString();
-		FileManager.write(new File(IHaveNoFriend.storingFile, uniqueID + ".json"), jsonObjectToString);
+		FileManager.write(new File(storingFile, uniqueID + ".json"), jsonObjectToString);
 	}
 }
