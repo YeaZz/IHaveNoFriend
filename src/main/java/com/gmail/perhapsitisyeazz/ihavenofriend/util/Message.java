@@ -13,9 +13,9 @@ import org.bukkit.entity.Player;
 
 public class Message {
 
-	private static final IHaveNoFriend instance = IHaveNoFriend.getInstance();
+	private final IHaveNoFriend instance = IHaveNoFriend.getInstance();
 
-	public static void sendHelpMessage(CommandSender sender) {
+	public void sendHelpMessage(CommandSender sender) {
 		ComponentBuilder builder = new ComponentBuilder();
 		if (sender instanceof Player) {
 			builder
@@ -64,7 +64,7 @@ public class Message {
 		}
 	}
 
-	public static BaseComponent[] getSenderRequestMessage(OfflinePlayer player) {
+	public BaseComponent[] getSenderRequestMessage(OfflinePlayer player) {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -77,7 +77,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getTargetRequestMessage(OfflinePlayer player) {
+	public BaseComponent[] getTargetRequestMessage(OfflinePlayer player) {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -97,13 +97,13 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getInvalidRequestMessage() {
+	public BaseComponent[] getInvalidRequestMessage() {
 		return new ComponentBuilder()
 				.append("This request is invalid or has expired.").color(ChatColor.RED)
 				.create();
 	}
 
-	public static BaseComponent[] getFriendRequestExpired(OfflinePlayer player) {
+	public BaseComponent[] getFriendRequestExpired(OfflinePlayer player) {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -114,7 +114,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getRequestAlreadySend(OfflinePlayer player) {
+	public BaseComponent[] getRequestAlreadySend(OfflinePlayer player) {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -125,7 +125,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getIsNotYourFriendMessage(OfflinePlayer player) {
+	public BaseComponent[] getIsNotYourFriendMessage(OfflinePlayer player) {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -135,7 +135,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getIsAlreadyYourFriendMessage(OfflinePlayer player) {
+	public BaseComponent[] getIsAlreadyYourFriendMessage(OfflinePlayer player) {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -145,7 +145,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getSuccessfullyAddedMessage(OfflinePlayer player) {
+	public BaseComponent[] getSuccessfullyAddedMessage(OfflinePlayer player) {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -155,7 +155,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getCannotAddFriendMessage() {
+	public BaseComponent[] getCannotAddFriendMessage() {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -164,7 +164,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getAddedInFriendListMessage(OfflinePlayer player) {
+	public BaseComponent[] getAddedInFriendListMessage(OfflinePlayer player) {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -174,7 +174,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getSuccessfullyDeclinedMessage(OfflinePlayer player) {
+	public BaseComponent[] getSuccessfullyDeclinedMessage(OfflinePlayer player) {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -184,7 +184,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getSuccessfullyRemovedMessage(OfflinePlayer player) {
+	public BaseComponent[] getSuccessfullyRemovedMessage(OfflinePlayer player) {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -195,7 +195,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getEveryCanAddFriendMessage() {
+	public BaseComponent[] getEveryCanAddFriendMessage() {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -204,7 +204,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getNobodyCanAddFriendMessage() {
+	public BaseComponent[] getNobodyCanAddFriendMessage() {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -213,7 +213,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getDoesNotAcceptFriendMessage(OfflinePlayer player) {
+	public BaseComponent[] getDoesNotAcceptFriendMessage(OfflinePlayer player) {
 		return new ComponentBuilder()
 				.append("[").color(ChatColor.DARK_GRAY)
 				.append("Friend").color(ChatColor.DARK_AQUA)
@@ -223,7 +223,7 @@ public class Message {
 				.create();
 	}
 
-	public static BaseComponent[] getNoFriendMessage() {
+	public BaseComponent[] getNoFriendMessage() {
 		return new ComponentBuilder()
 				.append("You do not have friends :(").color(ChatColor.RED)
 				.create();

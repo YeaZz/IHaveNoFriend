@@ -25,71 +25,72 @@ import java.util.UUID;
 public class Friend {
 
     private final IHaveNoFriend instance = IHaveNoFriend.getInstance();
+    private final Message message = new Message();
 
     private final HashMap<UUID, UUID> friendRequest = IHaveNoFriend.friendRequest;
 
     public void friendAcceptCommand(Player sender, OfflinePlayer target) {
         if (!friendRequest.containsKey(target.getUniqueId()) && !friendRequest.containsValue(sender.getUniqueId())) {
-            sender.sendMessage(Message.getInvalidRequestMessage());
+            sender.sendMessage(message.getInvalidRequestMessage());
             return;
         }
         friendRequest.remove(target.getUniqueId(), sender.getUniqueId());
         if (Data.alreadyFriend(sender, target)) {
-            sender.sendMessage(Message.getIsAlreadyYourFriendMessage(target));
+            sender.sendMessage(message.getIsAlreadyYourFriendMessage(target));
             return;
         }
         Data.addFriendFile(sender, target);
-        sender.sendMessage(Message.getSuccessfullyAddedMessage(target));
+        sender.sendMessage(message.getSuccessfullyAddedMessage(target));
         if (!target.isOnline()) return;
-        ((Player) target).sendMessage(Message.getAddedInFriendListMessage(sender));
+        ((Player) target).sendMessage(message.getAddedInFriendListMessage(sender));
     }
 
     public void friendDenyCommand(Player sender, OfflinePlayer target) {
         if (!friendRequest.containsKey(target.getUniqueId()) && !friendRequest.containsValue(sender.getUniqueId())) {
-            sender.sendMessage(Message.getInvalidRequestMessage());
+            sender.sendMessage(message.getInvalidRequestMessage());
             return;
         }
         friendRequest.remove(target.getUniqueId());
-        sender.sendMessage(Message.getSuccessfullyDeclinedMessage(target));
+        sender.sendMessage(message.getSuccessfullyDeclinedMessage(target));
     }
 
     public void friendAddCommand(Player sender, OfflinePlayer target) {
         UUID sID = sender.getUniqueId();
         UUID tID = target.getUniqueId();
         if (sender == target) {
-            sender.sendMessage(Message.getCannotAddFriendMessage());
+            sender.sendMessage(message.getCannotAddFriendMessage());
             return;
         }
         if (Data.alreadyFriend(sender, target)) {
-            sender.sendMessage(Message.getIsAlreadyYourFriendMessage(target));
+            sender.sendMessage(message.getIsAlreadyYourFriendMessage(target));
             return;
         }
         if (!Data.hasFriendToggle(target)) {
-            sender.sendMessage(Message.getDoesNotAcceptFriendMessage(target));
+            sender.sendMessage(message.getDoesNotAcceptFriendMessage(target));
             return;
         }
         if (friendRequest.containsKey(sID) && friendRequest.containsValue(tID)) {
-            sender.sendMessage(Message.getRequestAlreadySend(target));
+            sender.sendMessage(message.getRequestAlreadySend(target));
             return;
         }
         if (friendRequest.containsKey(tID) && friendRequest.containsValue(sID)) {
             friendRequest.remove(tID, sID);
             Data.addFriendFile(sender, target);
-            sender.sendMessage(Message.getAddedInFriendListMessage(target));
-            if (target.isOnline()) ((Player) target).sendMessage(Message.getAddedInFriendListMessage(sender));
+            sender.sendMessage(message.getAddedInFriendListMessage(target));
+            if (target.isOnline()) ((Player) target).sendMessage(message.getAddedInFriendListMessage(sender));
             return;
         }
         friendRequest.put(sID, tID);
-        sender.sendMessage(Message.getSenderRequestMessage(target));
-        if (target.isOnline()) ((Player) target).sendMessage(Message.getTargetRequestMessage(sender));
+        sender.sendMessage(message.getSenderRequestMessage(target));
+        if (target.isOnline()) ((Player) target).sendMessage(message.getTargetRequestMessage(sender));
         BukkitRunnable runnable;
         runnable = new BukkitRunnable() {
             @Override
             public void run() {
                 if (friendRequest.containsKey(sID) && friendRequest.containsValue(tID)) {
                     friendRequest.remove(sID, tID);
-                    sender.sendMessage(Message.getFriendRequestExpired(target));
-                    if (target.isOnline()) ((Player) target).sendMessage(Message.getFriendRequestExpired(sender));
+                    sender.sendMessage(message.getFriendRequestExpired(target));
+                    if (target.isOnline()) ((Player) target).sendMessage(message.getFriendRequestExpired(sender));
                 }
             }
         };
@@ -98,18 +99,18 @@ public class Friend {
 
     public void friendRemoveCommand(Player sender, OfflinePlayer target) {
         if (!Data.alreadyFriend(sender, target)) {
-            sender.sendMessage(Message.getIsNotYourFriendMessage(target));
+            sender.sendMessage(message.getIsNotYourFriendMessage(target));
             return;
         }
         Data.removeFriendFile(sender, target);
-        sender.sendMessage(Message.getSuccessfullyRemovedMessage(target));
+        sender.sendMessage(message.getSuccessfullyRemovedMessage(target));
     }
 
     public void friendListFriend(Player sender) {
         JsonObject senderObject = Data.getJsonObject(sender);
         JsonArray jsonArray = senderObject.get("FriendList").getAsJsonArray();
         if (jsonArray.size() == 0) {
-            sender.sendMessage(Message.getNoFriendMessage());
+            sender.sendMessage(message.getNoFriendMessage());
             return;
         }
         ComponentBuilder builder = new ComponentBuilder();
@@ -139,11 +140,11 @@ public class Friend {
     public void friendToggleCommand(Player sender) {
         JsonObject object = Data.getJsonObject(sender);
         if (Data.hasFriendToggle(sender)) {
-            sender.sendMessage(Message.getNobodyCanAddFriendMessage());
+            sender.sendMessage(message.getNobodyCanAddFriendMessage());
             object.addProperty("hasFriendRequestToggle", false);
             return;
         }
-        sender.sendMessage(Message.getEveryCanAddFriendMessage());
+        sender.sendMessage(message.getEveryCanAddFriendMessage());
         object.addProperty("hasFriendRequestToggle", true);
         Data.saveObject(Data.getData(sender), object);
     }
