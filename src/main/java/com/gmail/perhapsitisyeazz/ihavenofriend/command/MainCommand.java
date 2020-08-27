@@ -20,6 +20,7 @@ import java.util.*;
 public class MainCommand extends Commander<CommandSender> implements WrappedCommand {
 
     private final Friend friendManager = new Friend();
+    private final Message message = new Message();
 
     @Override
     public CommandImpl create() {
@@ -55,7 +56,7 @@ public class MainCommand extends Commander<CommandSender> implements WrappedComm
 
     @Override
     public CommandSingleAction<CommandSender> getDefault() {
-        return Message::sendHelpMessage;
+        return message::sendHelpMessage;
     }
 
     @Override
