@@ -14,6 +14,9 @@ import org.bukkit.entity.Player;
 public class Message {
 
 	private final IHaveNoFriend instance = IHaveNoFriend.getInstance();
+	private final Utils utils = new Utils();
+
+	private final String logo = "&8[&3Friend&8] ";
 
 	public void sendHelpMessage(CommandSender sender) {
 		ComponentBuilder builder = new ComponentBuilder();
@@ -97,135 +100,59 @@ public class Message {
 				.create();
 	}
 
-	public BaseComponent[] getInvalidRequestMessage() {
-		return new ComponentBuilder()
-				.append("This request is invalid or has expired.").color(ChatColor.RED)
-				.create();
+	public String getInvalidRequestMessage() {
+		return utils.getColMsg(logo + "&cThis request is invalid or has expired.");
 	}
 
-	public BaseComponent[] getFriendRequestExpired(OfflinePlayer player) {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append("Friend request from ").color(ChatColor.DARK_GREEN)
-				.append(player.getName()).color(ChatColor.AQUA)
-				.append(" expired.").color(ChatColor.DARK_GREEN)
-				.create();
+	public String getFriendRequestExpired(OfflinePlayer player) {
+		return utils.getColMsg(logo + "&2Friend request from &b" + player.getName() + " &2expired.");
 	}
 
-	public BaseComponent[] getRequestAlreadySend(OfflinePlayer player) {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append("Request already sent to ").color(ChatColor.DARK_GREEN)
-				.append(player.getName()).color(ChatColor.AQUA)
-				.append(".").color(ChatColor.DARK_GREEN)
-				.create();
+	public String getRequestAlreadySend(OfflinePlayer player) {
+		return utils.getColMsg(logo + "&2Request already sent to &b" + player.getName() + "&b.");
 	}
 
-	public BaseComponent[] getIsNotYourFriendMessage(OfflinePlayer player) {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append(player.getName()).color(ChatColor.AQUA)
-				.append(" is not your friend.").color(ChatColor.DARK_GREEN)
-				.create();
+	public String getIsNotYourFriendMessage(OfflinePlayer player) {
+		return utils.getColMsg(logo + "&b" + player.getName() + " &2is not your friend.");
 	}
 
-	public BaseComponent[] getIsAlreadyYourFriendMessage(OfflinePlayer player) {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append(player.getName()).color(ChatColor.AQUA)
-				.append(" is already your friend.").color(ChatColor.DARK_GREEN)
-				.create();
+	public String getIsAlreadyYourFriendMessage(OfflinePlayer player) {
+		return utils.getColMsg(logo + "&b" + player.getName() + " &2is already your friend.");
 	}
 
-	public BaseComponent[] getSuccessfullyAddedMessage(OfflinePlayer player) {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append(player.getName()).color(ChatColor.AQUA)
-				.append(" has been added to your friend list.").color(ChatColor.DARK_GREEN)
-				.create();
+	public String getSuccessfullyAddedMessage(OfflinePlayer player) {
+		return utils.getColMsg(logo + "&b" + player.getName() + " &2has been added to your friend list.");
 	}
 
-	public BaseComponent[] getCannotAddFriendMessage() {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append("You cannot add this player to your friend list.").color(ChatColor.RED)
-				.create();
+	public String getCannotAddFriendMessage() {
+		return utils.getColMsg(logo + "&cYou cannot add this player to your friend list.");
 	}
 
-	public BaseComponent[] getAddedInFriendListMessage(OfflinePlayer player) {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append(player.getName()).color(ChatColor.AQUA)
-				.append(" has been added to your friend list.").color(ChatColor.DARK_GREEN)
-				.create();
+	public String getAddedInFriendListMessage(OfflinePlayer player) {
+		return utils.getColMsg(logo + "&b" + player.getName() + " &2has been added to your friend list.");
 	}
 
-	public BaseComponent[] getSuccessfullyDeclinedMessage(OfflinePlayer player) {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append("You have declined the friend request from ").color(ChatColor.DARK_GREEN)
-				.append(player.getName()).color(ChatColor.AQUA)
-				.create();
+	public String getSuccessfullyDeclinedMessage(OfflinePlayer player) {
+		return utils.getColMsg(logo + "&2You have declined the friend request from &b" + player.getName() + "&2.");
 	}
 
-	public BaseComponent[] getSuccessfullyRemovedMessage(OfflinePlayer player) {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append("You have successfully removed ").color(ChatColor.DARK_GREEN)
-				.append(player.getName()).color(ChatColor.AQUA)
-				.append(" from your friend list.").color(ChatColor.DARK_GREEN)
-				.create();
+	public String getSuccessfullyRemovedMessage(OfflinePlayer player) {
+		return utils.getColMsg(logo + "&2You have successfully removed &b" + player.getName() + " &2from your friend list.");
 	}
 
-	public BaseComponent[] getEveryCanAddFriendMessage() {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append("Everybody can add you as friend now.").color(ChatColor.DARK_GREEN)
-				.create();
+	public String getEveryCanAddFriendMessage() {
+		return utils.getColMsg(logo + "&2Everybody can add you as friend now.");
 	}
 
-	public BaseComponent[] getNobodyCanAddFriendMessage() {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append("Nobody can add you as friend anymore.").color(ChatColor.DARK_GREEN)
-				.create();
+	public String getNobodyCanAddFriendMessage() {
+		return utils.getColMsg(logo + "&2Nobody can add you as friend anymore.");
 	}
 
-	public BaseComponent[] getDoesNotAcceptFriendMessage(OfflinePlayer player) {
-		return new ComponentBuilder()
-				.append("[").color(ChatColor.DARK_GRAY)
-				.append("Friend").color(ChatColor.DARK_AQUA)
-				.append("] ").color(ChatColor.DARK_GRAY)
-				.append(player.getName()).color(ChatColor.AQUA)
-				.append(" doesn't accept friend request.").color(ChatColor.DARK_GREEN)
-				.create();
+	public String getDoesNotAcceptFriendMessage(OfflinePlayer player) {
+		return utils.getColMsg(logo + "&b" + player.getName() + " &2doesn't accept friend request.");
 	}
 
-	public BaseComponent[] getNoFriendMessage() {
-		return new ComponentBuilder()
-				.append("You do not have friends :(").color(ChatColor.RED)
-				.create();
+	public String getNoFriendMessage() {
+		return utils.getColMsg(logo +"&cYou do not have friends :(");
 	}
 }
